@@ -221,4 +221,9 @@
             gap: 15px;
         }
     }
+    @media (max-width: 330px) {
+        .menu ul {
+        grid-template-columns: 1fr;
+        }
+    }
 }

@@ -151,7 +151,7 @@ if (section && section[1]) {
   window.addEventListener("scroll", () => {
     let windowTop = window.pageYOffset || document.documentElement.scrollTop; 
     if (windowTop > section[1].getBoundingClientRect().top) {
-      if (window.innerHeight - document.querySelector("footer").getBoundingClientRect().bottom + 30 >= 0) {
+      if (window.innerHeight - document.querySelector(".footer__top").getBoundingClientRect().bottom + 30 >= 0) {
         fixedBtn.classList.remove("intersect","show")
         if (window.innerWidth <= 767) {
           headerBtn.style.transform = "translateY(100%)"

@@ -318,6 +318,13 @@
     @media (max-width: $bp4) {
         font-size: 16px;
     }
+    @media (min-width: 340px) and (max-width:$bp4) {
+        &__address {
+            span {
+                display: block;
+            }
+        }
+    }
 }
 .icon-menu {
     width: 60px;

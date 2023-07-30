@@ -1263,6 +1263,7 @@ h1.h2 {
   color: #ffffff;
   padding: 16px 20px 16px 55px;
   background: url(../img/icons/popup-close.svg) left 20px center/20px 20px no-repeat, #006422;
+  white-space: nowrap;
   border-radius: 10px;
   top: auto;
   bottom: 20px;
@@ -4564,10 +4565,6 @@ h1.h2 {
     height: 160px;
   }
 
-  .form__txt {
-    max-width: 257px;
-  }
-
   .question-form__header {
     margin-bottom: 20px;
   }
@@ -6875,7 +6872,7 @@ h1.h2 {
   }
 
   .item-info__content {
-    max-width: 200px;
+    max-width: 205px;
     right: 20px;
   }
 
@@ -6970,7 +6967,8 @@ h1.h2 {
     padding: 0 20px;
   }
 
-  .col-features:nth-child(1) img {
+  .col-features:nth-child(1) img,
+  .col-features:nth-child(3n) img {
     -webkit-transform: translate(0);
     -ms-transform: translate(0);
     transform: translate(0);
@@ -7778,6 +7776,10 @@ h1.h2 {
     margin: 0 -10px 40px;
   }
 
+  .map-modal .modal__close {
+    background-size: 15px 15px;
+  }
+
   .header__phones {
     margin: 0 -10px;
   }
@@ -7839,9 +7841,21 @@ h1.h2 {
   }
 }
 
+@media (max-width: 330px) {
+  .footer .menu ul {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 30px) {
   .info__header {
     padding: 0 10px;
+  }
+}
+
+@media (min-width: 340px) and (max-width: 767px) {
+  .item-contact__address span {
+    display: block;
   }
 }
 

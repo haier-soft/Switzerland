@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+@@include('_head.html', {
+"title": "Выбор квартиры"
+})
+
+<body>
+    @@include("_svg.html")
+    <div class="wrap">
+        <!--header-->
+        @@include('_header-nobtn.html')
+        <!--main-->
+        <main class="main">
+            @@include('_breadcrumbs.html', {
+            "page": "Выбор квартиры"
+            })
+            <!--catalog section-->
+            <section class="catalog">
+                <div class="container">
+                    <h1 class="h2">Выбрать квартиру</h1>
+                    <nav class="catalog__tabs">
+                        <div class="btn stroke-btn catalog__tab active" data-nav="scheme">По схеме</div>
+                        <div class="btn stroke-btn catalog__tab" data-nav="list">По списку</div>
+                        <div class="btn stroke-btn catalog__tab" data-nav="cat">По каталогу</div>
+                    </nav>
+                    <div class="catalog__inner">
+                        <!--filter-->
+                        <div class="filter">
+                            <div class="filter__header">
+                                <div class="page-lbl">Фильтр</div>
+                            </div>
+                            <!--filter-form-->
+                            <form action="" class="modal mob-modal filter-form"
+                                onreset="event.preventDefault();filter-filterFormOnReset(this)">
+                                <div class="modal__overlay filter-form__inner">                                                    
+                                    <div class="modal__content filter-form__content">
+                                        <button type="button" class="modal__close filter-form__close" aria-label="Закрыть всплывающее окно"></button>
+                                        <div class="modal__scroll">
+                                            <div class="filter-form__sec">
+                                                <div class="page-lbl">Количество комнат</div>
+                                                <div class="filter-form__checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="#">
+                                                        <span>C</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" name="#">
+                                                        <span>1</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" name="#">
+                                                        <span>2</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" name="#">
+                                                        <span>3</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="filter-form__sec">
+                                                <div class="page-lbl">Стоимость </div>
+                                                <div class="range range--price">
+                                                    <div class="range__values">
+                                                        <div class="range__value">
+                                                            <input id="price-start" type="number" step="any" autocomplete="off">
+                                                        </div>
+                                                        <span></span>
+                                                        <div class="range__value">
+                                                            <input id="price-end" type="number" step="any" autocomplete="off">
+                                                        </div>
+                                                    </div>
+                                                    <div class="range__slider price-slider"></div>
+                                                </div>
+                                            </div>
+                                            <div class="filter-form__sec">
+                                                <div class="page-lbl">Этаж</div>
+                                                <div class="range">
+                                                    <div class="range__values">
+                                                        <div class="range__value">
+                                                            <input id="floor-start" type="number" autocomplete="off">
+                                                        </div>
+                                                        <span></span>
+                                                        <div class="range__value">
+                                                            <input id="floor-end" type="number" autocomplete="off">
+                                                        </div>
+                                                    </div>
+                                                    <div class="range__slider floor-slider"></div>
+                                                </div>
+                                            </div>
+                                            <div class="filter-form__footer">
+                                                <div class="filter-form__info">
+                                                    <div class="page-lbl">Найдено:</div>
+                                                    <div class="h6 filter-form__result">230 квартир</div>
+                                                </div>
+                                                <div class="filter-form__btns">
+                                                    <button type="submit" class="btn stroke-btn">Применить</button>
+                                                    <button type="reset" class="filter-form__reset">Сбросить</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="filter__footer">
+                                <div class="h6">Срок сдачи:</div>
+                                <div class="h5">III квартал 2025г</div>
+                            </div>
+                        </div>
+                        <!--wrapper-->
+                        <div class="catalog__wrapper">
+                            <!--catalog__block-->
+                            <div class="scheme-cat catalog__block active" data-block="scheme">
+                                <div class="scheme-cat__header">
+                                    <div class="scheme-cat__labels">
+                                        <span>Этаж</span>
+                                        <span>Квартиры</span>
+                                    </div>
+                                    <div class="scheme-cat__status">
+                                        <span>Свободно</span>
+                                        <span>Бронь</span>
+                                        <span>Продано</span>
+                                    </div>
+                                </div>
+                                <div class="custom-scroll scheme-cat__inner">
+                                    <ul class="scheme-cat__floors">
+                                        <li>18</li>
+                                        <li>17</li>
+                                        <li>16</li>
+                                        <li>15</li>
+                                        <li>14</li>
+                                        <li>13</li>
+                                        <li>12</li>
+                                        <li>11</li>
+                                        <li>10</li>
+                                        <li>9</li>
+                                        <li>8</li>
+                                        <li>7</li>
+                                        <li>6</li>
+                                        <li>5</li>
+                                        <li>4</li>
+                                        <li>3</li>
+                                        <li>2</li>
+                                    </ul>
+                                    <div class="custom-scroll scheme-cat__apartaments">
+                                        <div class="item-apartaments">
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">C</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">C</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="sold">2</a>
+                                        </div>
+                                        <div class="item-apartaments">
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="sold">C</a>
+                                            <a href="#" class="sold">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                        </div>
+                                        <div class="item-apartaments">
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">C</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="hold">2</a>
+                                        </div>
+                                        <div class="item-apartaments">
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">C</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="sold">2</a>
+                                            <a href="#" class="sold">2</a>
+                                        </div>
+                                        <div class="item-apartaments">
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">C</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="sold">2</a>
+                                        </div>
+                                        <div class="item-apartaments">
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">C</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="sold">2</a>
+                                        </div>
+                                        <div class="item-apartaments">
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">C</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                        </div>
+                                        <div class="item-apartaments">
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">C</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="hold">2</a>
+                                        </div>
+                                        <div class="item-apartaments">
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="hold">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">C</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="hold">2</a>
+                                        </div>
+                                        <div class="item-apartaments">
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">C</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                        </div>
+                                        <div class="item-apartaments">
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="sold">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">C</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="hold">2</a>
+                                        </div>
+                                        <div class="item-apartaments">
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="hold">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">C</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                        </div>
+                                        <div class="item-apartaments">
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">C</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                        </div>
+                                        <div class="item-apartaments">
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">C</a>
+                                            <a href="#" class="hold">2</a>
+                                            <a href="#" class="hold">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                        </div>
+                                        <div class="item-apartaments">
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="sold">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">C</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                        </div>
+                                        <div class="item-apartaments">
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="sold">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">C</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                        </div>
+                                        <div class="item-apartaments">
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">3</a>
+                                            <a href="#" class="on-sale">1</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">C</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                            <a href="#" class="on-sale">2</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--catalog__block-->
+                            <div class="list-cat catalog__block" data-block="list">
+                                <div class="list-cat__inner">
+                                    <div class="list-cat__header">
+                                        <span>Чертёж</span>
+                                        <span>Компас</span>
+                                        <span>№</span>
+                                        <span>Этаж</span>
+                                        <span>Подъезд</span>
+                                        <span>Комнат</span>
+                                        <span class="list-cat__square">Площадь</span>
+                                        <span>Статус</span>
+                                        <span>Цена, руб</span>
+                                    </div>
+                                    <div class="custom-scroll list-cat__items">
+                                        @@loop("_item-list.html", [
+                                        { "number": "124", "floor": "18", "price": "4 452 000" },
+                                        { "number": "123", "floor": "6", "price": "4 452 000" },
+                                        { "number": "122", "floor": "9", "price": "4 452 000" },
+                                        { "number": "121", "floor": "7", "price": "4 452 000" },
+                                        { "number": "120", "floor": "3", "price": "4 452 000" },
+                                        { "number": "45", "floor": "2", "price": "По запросу" },
+                                        { "number": "32", "floor": "5", "price": "4 452 000" },
+                                        { "number": "89", "floor": "18", "price": "4 452 000" },
+                                        { "number": "100", "floor": "18", "price": "4 452 000" },
+                                        { "number": "119", "floor": "18", "price": "4 452 000" }
+                                        ])
+                                    </div>
+                                </div>
+                                <a href="#" class="catalog__btn list-cat__btn"><span>показать еще</span></a>
+                            </div>
+                            <!--catalog__block-->
+                            <div class="catalog-cat catalog__block" data-block="cat">
+                                <div class="catalog-cat__items">
+                                    @@loop("_item-catalog.html", [
+                                    {"title-1": "1-комнатная", "title-2": "№ 124", "price": "4 452 000 руб"},
+                                    {"title-1": "3-комнатная", "title-2": "№ 24", "price": "Цена по запросу"},
+                                    {"title-1": "Студия", "title-2": "№ 34", "price": "4 452 000 руб"},
+                                    {"title-1": "1-комнатная", "title-2": "№ 124", "price": "4 452 000 руб"}
+                                    ])
+                                </div>
+                                <a href="#" class="catalog__btn catalog-cat__btn"><span>показать еще</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!--footer-->
+        @@include('_footer.html')
+        @@include('_modal.html')
+    </div>
+    @@include('_js.html')
+</body>
+
+</html>

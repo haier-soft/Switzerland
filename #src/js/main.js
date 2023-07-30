@@ -530,8 +530,9 @@ if (schemePopup) {
         })
       }
     })
-    item.addEventListener("click", () => {
+    item.addEventListener("click", e => {
       if (window.innerWidth <= 1260) {
+        e.preventDefault()
         openModal(schemePopup)
       }      
     })

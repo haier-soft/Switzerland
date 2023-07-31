@@ -154,18 +154,22 @@ if (section && section[1]) {
     if (windowTop > section[1].getBoundingClientRect().top) {
       if (window.innerHeight - document.querySelector(".footer__top").getBoundingClientRect().bottom + 30 >= 0) {
         fixedBtn.classList.remove("intersect","show")
-        if (window.innerWidth <= 767) {
-          headerBtn.style.transform = "translateY(100%)"
-        }
       } else {
         fixedBtn.classList.add("intersect","show")
-        headerBtn.style.transform = "translateY(0%)"
       }   
     } else {
       fixedBtn.classList.remove("intersect","show")
     }
   })
 } 
+//show/unshow header fixed btn
+window.addEventListener("scroll", ()=> {
+  if (window.innerWidth <= 767 && window.innerHeight - document.querySelector(".footer__top").getBoundingClientRect().bottom + 30 >= 0) {
+    headerBtn.style.transform = "translateY(100%)"
+  } else {
+    headerBtn.style.transform = "translateY(0%)"
+  } 
+})
 //mask input
 const inp = document.querySelectorAll('input[type=tel]')
  if (inp) {
@@ -509,15 +513,12 @@ if (schemePopup) {
       schemePopup.classList.add("open")
       let top = item.getBoundingClientRect().top
       let left = item.getBoundingClientRect().left
-      console.log(schemePopup.clientHeight + top)
-      console.log(window.innerHeight)
       if (window.innerWidth < left + schemePopup.clientWidth + item.clientWidth + 50) {
         schemePopup.style.left = xPos - schemePopup.clientWidth - 10 + "px"
       } else {
         schemePopup.style.left = xPos + 15 + "px"
       }
       if (window.innerHeight < top + schemePopup.clientHeight + 25) {
-        console.log("hh")
         schemePopup.style.top = yPos - schemePopup.clientHeight - 5 + "px"
       } else {
         schemePopup.style.top = yPos + 25 + "px"

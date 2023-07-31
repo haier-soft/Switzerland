@@ -6724,6 +6724,7 @@ h1.h2 {
   }
 
   .mob-modal .modal__scroll {
+    max-width: 567px;
     padding: 0 20px 30px;
   }
 

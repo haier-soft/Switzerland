@@ -436,6 +436,7 @@
     }
     @media (max-width: $bp4) {
         .modal__scroll {
+            max-width: 567px;
             padding: 0 20px 30px;
         }
     }

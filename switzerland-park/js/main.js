@@ -212,7 +212,6 @@ if (document.querySelector(".features__swiper")) {
   initFeaturesSwiper()
   window.addEventListener("resize", initFeaturesSwiper)
 }
-window.addEventListener("DOMContentLoaded", () => {
   //item-building images count
 if (document.querySelector(".item-building")) {
   const buildItm = document.querySelectorAll(".item-building")
@@ -281,38 +280,6 @@ if (document.querySelector(".improvements__swiper")) {
         slidesPerView: 3,
         centeredSlides: false,
       }
-    }
-  })
-}
-//init swiper and fix it on scroll
-if (document.querySelector(".infra__swiper")) {
-  const infra = document.querySelector(".infra__swiper")
-  let slideCount = infra.querySelectorAll(".swiper-slide").length
-  let infraSwiper = new Swiper(infra, {
-    slidesPerView: 1,
-    observer: true,
-    observeParents: true,
-    pagination: {
-      el: '.infra__pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    effect: 'fade',
-    speed: 700
-  })
-  let activeIndex = {value: 0}
-  let ifraSwiperAnim = gsap.to(activeIndex, {
-    value: slideCount - 1,
-    scrollTrigger: {
-      trigger: ".infra .container",
-      start: "center center",
-      end: "+=" + 300 * slideCount,
-      pin: true,
-      scrub: true,
-      invalidateOnRefresh: true,
-      onUpdate: (self) => {
-        infraSwiper.slideTo(Math.round(activeIndex.value))
-      },
     }
   })
 }
@@ -388,6 +355,39 @@ if (document.querySelector(".flat")) {
   }
 flatSwiperInit()
 window.addEventListener("resize", flatSwiperInit)
+}
+window.addEventListener("DOMContentLoaded", () => {
+  //init swiper and fix it on scroll
+if (document.querySelector(".infra__swiper")) {
+  const infra = document.querySelector(".infra__swiper")
+  let slideCount = infra.querySelectorAll(".swiper-slide").length
+  let infraSwiper = new Swiper(infra, {
+    slidesPerView: 1,
+    observer: true,
+    observeParents: true,
+    pagination: {
+      el: '.infra__pagination',
+      type: 'bullets',
+      clickable: true
+    },
+    effect: 'fade',
+    speed: 700
+  })
+  let activeIndex = {value: 0}
+  let ifraSwiperAnim = gsap.to(activeIndex, {
+    value: slideCount - 1,
+    scrollTrigger: {
+      trigger: ".infra .container",
+      start: "center center",
+      end: "+=" + 300 * slideCount,
+      pin: true,
+      scrub: true,
+      invalidateOnRefresh: true,
+      onUpdate: (self) => {
+        infraSwiper.slideTo(Math.round(activeIndex.value))
+      },
+    }
+  })
 }
 })
 //filter-form

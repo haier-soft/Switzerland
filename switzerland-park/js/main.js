@@ -560,7 +560,8 @@ if (document.querySelector(".views")) {
   const viewsBtn = document.querySelectorAll(".views__btn")
   const viewsBar = document.querySelector(".views__bar")
   viewsBtn.forEach(btn => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", e => {
+      e.preventDefault()
       if (btn.classList.contains("views__btn--night")) {
         viewsBar.style.transform = "translateX(100%)";
         viewsBar.style.backgroundColor = "#313534"

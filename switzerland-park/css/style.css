@@ -5373,6 +5373,9 @@ h1.h2 {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
   }
 
   .header__phones a {
@@ -6768,6 +6771,9 @@ h1.h2 {
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
     background: #fff;
     -webkit-box-pack: center;
     -ms-flex-pack: center;

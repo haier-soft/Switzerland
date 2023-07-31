@@ -162,6 +162,7 @@
         &__phones {
             grid-area: 1/1/2/2;
             flex-direction: column;
+            align-items: flex-start;
             a {
                 margin-bottom: 15px;
             }
@@ -223,6 +224,7 @@
         &__phones {
             grid-column: 1/3;
             flex-direction: row;
+            align-items: center;
             background: #fff;
             justify-content: center;
             margin: 0 calc((-100vw + 100%)/2 + 0px);

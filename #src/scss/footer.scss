@@ -97,8 +97,10 @@
             }
         } 
         &__logo {
-            width: 277px;
-            height: 107px;
+            svg {
+                width: 277px;
+                height: 107px;
+            }        
         }
         &__department {
             padding-top: 12px;
@@ -118,10 +120,12 @@
             }
         } 
         &__logo {
-            width: 318px;
-            height: 123px;
             justify-self: center;
             margin-bottom: -30px;
+            svg {
+                width: 318px;
+                height: 123px;
+            }
         }
         &__menu {
             max-width: 404px;
@@ -178,9 +182,11 @@
             padding: 50px 0;
         }
         &__logo {
-            width: 266px;
-            height: 103px;
             margin-bottom: 0;
+            svg {
+                width: 266px;
+                height: 103px;
+            }
         }
         &__department {
             padding-top: 0;

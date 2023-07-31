@@ -147,6 +147,7 @@ iconMenu.addEventListener("click", () => {
     disableScroll()
   }
 })
+
 //show/unshow fixed btn
 if (section && section[1]) {
   window.addEventListener("scroll", () => {
@@ -222,179 +223,178 @@ if (document.querySelector(".item-building")) {
     }
   })
 }
-$(document).ready(function () {
-  //building swiper
-  if (document.querySelector(".main-building__swiper")) {
-    const mainBuildSwiper = new Swiper(".main-building__swiper", {
-      slidesPerView: 1,
-      slidesPerGroup: 1,
-      centeredSlides: true,
-      spaceBetween: 10,
-      observer: true,
-      observeParents: true,
-      speed: 800,
-      initialSlide: 1,
-      breakpoints: {
-        480.98: {
-          slidesPerView: 1.3,
-          spaceBetween: 20
-        },
-        767.98: {
-          slidesPerView: 2,
-          spaceBetween: 20
-        },
-        991.98: {
-          slidesPerView: 2,
-          spaceBetween: 30,
-        },
-        1520.98: {
-          slidesPerView: 2,
-          spaceBetween: 40,
-        },
+//building swiper
+if (document.querySelector(".main-building__swiper")) {
+  const mainBuildSwiper = new Swiper(".main-building__swiper", {
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    centeredSlides: true,
+    spaceBetween: 10,
+    observer: true,
+    observeParents: true,
+    speed: 800,
+    initialSlide: 1,
+    breakpoints: {
+      480.98: {
+        slidesPerView: 1.3,
+        spaceBetween: 20
       },
-      navigation: {
-        nextEl: '.main-building-btn--next',
-        prevEl: '.main-building-btn--prev',
-      }
-    })
-  }
-  //improvements swiper
-  if (document.querySelector(".improvements__swiper")) {
-    const improvmntSwiper = new Swiper('.improvements__swiper', {
-      slidesPerView: 1.14,
-      slidesPerGroup: 1,
-      observer: true,
-      observeParents: true,
-      speed: 800,
-      initialSlide: 1,
-      centeredSlides: true,
-      breakpoints: {
-        480.98: {
-          slidesPerView: 1.35,
-        },
-        767.98: {
-          slidesPerView: 1.65,
-        },
-        991.98: {
-          slidesPerView: 2.4,
-          centeredSlides: false,
-        },
-        1260.98: {
-          slidesPerView: 3,
-          centeredSlides: false,
-        }
-      }
-    })
-  }
-  // flat__images slider
-  if (document.querySelector(".flat")) {
-    const btn = document.querySelector(".flat__btn")
-    let thumbSwiper
-    let flatSwiperMob
-    let flatSwiperDesk
-    let flatSwiperMobInit = false
-    let flatSwiperDeskInit = false
-    function flatSwiperInit() {
-      if (window.innerWidth <= 991) {
-        if (flatSwiperDeskInit) {
-          flatSwiperDesk.destroy()
-          thumbSwiper.destroy()
-          flatSwiperDeskInit = false
-        }
-        if (!flatSwiperMobInit) {
-          flatSwiperMob = new Swiper(".flat__mainswiper", {
-            slidesPerView: 1,
-            slidesPerGroup: 1,
-            observer: true,
-            observeParents: true,
-            spaceBetween: 5,
-            autoplay: {
-              delay: 3500,
-              pauseOnMouseEnter: true,
-              disableOnInteraction: false
-            },
-            breakpoints: {
-              767.98: {
-                spaceBetween: 20,
-              }
-            },
-            speed: 800
-          })
-          flatSwiperMobInit = true
-          btn.addEventListener("click", () => {
-            flatSwiperMob.slides[flatSwiperMob.activeIndex].click()
-          })
-        }
-      } else {
-        if (flatSwiperMobInit) {
-          flatSwiperMob.destroy()
-          flatSwiperMobInit = false
-        }
-        if (!flatSwiperDeskInit) {
-          thumbSwiper = new Swiper(".flat__thumbswiper", {
-            slidesPerView: 3,
-            slidesPerGroup: 1,
-            spaceBetween: 20,
-            observer: true,
-            observeParents: true,
-            freeMode: true,
-            speed: 800,
-          })
-          flatSwiperDesk = new Swiper(".flat__mainswiper", {
-            slidesPerView: 1,
-            slidesPerGroup: 1,
-            observer: true,
-            observeParents: true,
-            effect: 'fade',
-            thumbs: {
-              swiper: thumbSwiper,
-            },
-            speed: 300
-          })
-          flatSwiperDeskInit = true
-          btn.addEventListener("click", () => {
-            flatSwiperDesk.slides[flatSwiperDesk.activeIndex].click()
-          })
-        }
+      767.98: {
+        slidesPerView: 2,
+        spaceBetween: 20
+      },
+      991.98: {
+        slidesPerView: 2,
+        spaceBetween: 30,
+      },
+      1520.98: {
+        slidesPerView: 2,
+        spaceBetween: 40,
+      },
+    },
+    navigation: {
+      nextEl: '.main-building-btn--next',
+      prevEl: '.main-building-btn--prev',
+    }
+  })
+}
+//improvements swiper
+if (document.querySelector(".improvements__swiper")) {
+  const improvmntSwiper = new Swiper('.improvements__swiper', {
+    slidesPerView: 1.14,
+    slidesPerGroup: 1,
+    observer: true,
+    observeParents: true,
+    speed: 800,
+    initialSlide: 1,
+    centeredSlides: true,
+    breakpoints: {
+      480.98: {
+        slidesPerView: 1.35,
+      },
+      767.98: {
+        slidesPerView: 1.65,
+      },
+      991.98: {
+        slidesPerView: 2.4,
+        centeredSlides: false,
+      },
+      1260.98: {
+        slidesPerView: 3,
+        centeredSlides: false,
       }
     }
-    flatSwiperInit()
-    window.addEventListener("resize", flatSwiperInit)
-  }
-  //init swiper and fix it on scroll
-  if (document.querySelector(".infra__swiper")) {
-    const infra = document.querySelector(".infra__swiper")
-    let slideCount = infra.querySelectorAll(".swiper-slide").length
-    let infraSwiper = new Swiper(infra, {
-      slidesPerView: 1,
-      slidesPerGroup: 1,
-      observer: true,
-      observeParents: true,
-      pagination: {
-        el: '.infra__pagination',
-        type: 'bullets',
-        clickable: true
-      },
-      effect: 'fade',
-      speed: 700
-    })
-    let activeIndex = { value: 0 }
-    let ifraSwiperAnim = gsap.to(activeIndex, {
-      value: slideCount - 1,
-      scrollTrigger: {
-        trigger: ".infra .container",
-        start: "center center",
-        end: "+=" + 300 * slideCount,
-        pin: true,
-        scrub: true,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          infraSwiper.slideTo(Math.round(activeIndex.value))
-        },
+  })
+}
+// flat__images slider
+if (document.querySelector(".flat")) {
+  const btn = document.querySelector(".flat__btn")
+  let thumbSwiper
+  let flatSwiperMob
+  let flatSwiperDesk
+  let flatSwiperMobInit = false
+  let flatSwiperDeskInit = false
+  function flatSwiperInit() {
+    if (window.innerWidth <= 991) {
+      if (flatSwiperDeskInit) {
+        flatSwiperDesk.destroy()
+        thumbSwiper.destroy()
+        flatSwiperDeskInit = false
       }
-    })
+      if (!flatSwiperMobInit) {
+        flatSwiperMob = new Swiper(".flat__mainswiper", {
+          slidesPerView: 1,
+          slidesPerGroup: 1,
+          observer: true,
+          observeParents: true,
+          spaceBetween: 5,
+          autoplay: {
+            delay: 3500,
+            pauseOnMouseEnter: true,
+            disableOnInteraction: false
+          },
+          breakpoints: {
+            767.98: {
+              spaceBetween: 20,
+            }
+          },
+          speed: 800
+        })
+        flatSwiperMobInit = true
+        btn.addEventListener("click", () => {
+          flatSwiperMob.slides[flatSwiperMob.activeIndex].click()
+        })
+      }
+    } else {
+      if (flatSwiperMobInit) {
+        flatSwiperMob.destroy()
+        flatSwiperMobInit = false
+      }
+      if (!flatSwiperDeskInit) {
+        thumbSwiper = new Swiper(".flat__thumbswiper", {
+          slidesPerView: 3,
+          slidesPerGroup: 1,
+          spaceBetween: 20,
+          observer: true,
+          observeParents: true,
+          freeMode: true,
+          speed: 800,
+        })
+        flatSwiperDesk = new Swiper(".flat__mainswiper", {
+          slidesPerView: 1,
+          slidesPerGroup: 1,
+          observer: true,
+          observeParents: true,
+          effect: 'fade',
+          thumbs: {
+            swiper: thumbSwiper,
+          },
+          speed: 300
+        })
+        flatSwiperDeskInit = true
+        btn.addEventListener("click", () => {
+          flatSwiperDesk.slides[flatSwiperDesk.activeIndex].click()
+        })
+      }
+    }
   }
-  //filter-form
+  flatSwiperInit()
+  window.addEventListener("resize", flatSwiperInit)
+}
+//init swiper and fix it on scroll
+if (document.querySelector(".infra__swiper")) {
+  const infra = document.querySelector(".infra__swiper")
+  let slideCount = infra.querySelectorAll(".swiper-slide").length
+  let infraSwiper = new Swiper(infra, {
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    observer: true,
+    observeParents: true,
+    pagination: {
+      el: '.infra__pagination',
+      type: 'bullets',
+      clickable: true
+    },
+    effect: 'fade',
+    speed: 700
+  })
+  let activeIndex = { value: 0 }
+  let ifraSwiperAnim = gsap.to(activeIndex, {
+    value: slideCount - 1,
+    scrollTrigger: {
+      trigger: ".infra .container",
+      start: "center center",
+      end: "+=" + 300 * slideCount,
+      pin: true,
+      scrub: true,
+      invalidateOnRefresh: true,
+      onUpdate: (self) => {
+        infraSwiper.slideTo(Math.round(activeIndex.value))
+      },
+    }
+  })
+}
+//filter-form
 if (filter) {
   filter.querySelectorAll("input").forEach(inp => {
     inp.addEventListener("change", () => {
@@ -680,5 +680,5 @@ if (document.querySelector('.main-map__content')) {
     }
   })
 }
-})
+
 

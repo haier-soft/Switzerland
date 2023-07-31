@@ -46,6 +46,7 @@ function formSuccess(form) {
       inp.value = ""
     }
   })
+  form.querySelectorAll(".form__item").forEach(item => item.classList.remove("error"))
   form.querySelectorAll(".form__placeholder").forEach(item => item.style.display = "block")
   let modal = document.querySelector(".modal.open")
   if (modal) {

@@ -365,7 +365,6 @@
         }
     }
     @media (max-width: $bp4) {
-        margin: 0 -10px 0 -20px;
         &__inner {
             display: flex;
             align-items: center;
@@ -403,6 +402,9 @@
             padding: 20px 5px 30px;
             margin: 0 5px 0 0;
             word-break: break-word;
+            &:last-child {
+                margin-right: 0;
+            }
         }
         &__preview {
             flex-direction: column;

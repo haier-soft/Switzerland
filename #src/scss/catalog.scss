@@ -310,6 +310,14 @@
             width: 100%;
             justify-content: space-between;
         }
+        .stroke-btn {
+            width: 182px;
+        }
+    }
+    @media (max-width: 370px) {
+        .stroke-btn {
+            width: 165px;
+        }
     }
 }
 .range {

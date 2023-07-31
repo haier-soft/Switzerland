@@ -7376,6 +7376,10 @@ h1.h2 {
     justify-content: space-between;
   }
 
+  .filter-form .stroke-btn {
+    width: 182px;
+  }
+
   .scheme-cat__header {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
@@ -7421,10 +7425,6 @@ h1.h2 {
     width: 60px;
     height: 38px;
     margin-right: 6px;
-  }
-
-  .list-cat {
-    margin: 0 -10px 0 -20px;
   }
 
   .list-cat__inner {
@@ -7482,6 +7482,10 @@ h1.h2 {
     padding: 20px 5px 30px;
     margin: 0 5px 0 0;
     word-break: break-word;
+  }
+
+  .list-cat__item:last-child {
+    margin-right: 0;
   }
 
   .list-cat__preview {
@@ -7818,6 +7822,10 @@ h1.h2 {
   .docs__top {
     margin-left: -10px;
     margin-right: -10px;
+  }
+
+  .filter-form .stroke-btn {
+    width: 165px;
   }
 
   .catalog-cat__preview {

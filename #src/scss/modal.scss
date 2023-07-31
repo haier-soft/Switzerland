@@ -243,6 +243,7 @@
          }
      }
      &__preview {
+        display: block;
          min-height: 65px;
          position: relative;
          background: rgba($main-color, 0.05);

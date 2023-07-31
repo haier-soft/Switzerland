@@ -1244,6 +1244,7 @@ h1.h2 {
 }
 
 .scheme-popup__preview {
+  display: block;
   min-height: 65px;
   position: relative;
   background: rgba(49, 53, 52, 0.05);
@@ -1553,6 +1554,7 @@ h1.h2 {
 }
 
 .header__logo {
+  display: block;
   width: 216px;
   height: 83px;
 }
@@ -6758,6 +6760,7 @@ h1.h2 {
 
   .header__top .container {
     grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
     gap: 20px;
   }
 
@@ -6788,6 +6791,7 @@ h1.h2 {
   }
 
   .header__logo {
+    grid-area: 2/1/3/2;
     width: 156px;
     height: 60px;
   }

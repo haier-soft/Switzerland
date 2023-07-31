@@ -19,6 +19,7 @@
         }    
     }
     &__logo {
+        display: block;
         width: 216px;
         height: 83px;
     }
@@ -215,6 +216,7 @@
             z-index: 900;
             .container {
                 grid-template-columns: 1fr auto;
+                grid-template-rows: auto auto;
                 gap: 20px;
             }
         }
@@ -235,6 +237,7 @@
             }
         }
         &__logo {
+            grid-area: 2/1/3/2;
             width: 156px;
             height: 60px;
         }

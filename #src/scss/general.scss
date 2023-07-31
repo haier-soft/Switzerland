@@ -559,12 +559,18 @@ h1.h2 {
         border: 1px solid $white;
         border-radius: 10px;
         color: $main-color;
+        transition: all .2s linear;
     }
     input::placeholder, &__placeholder {
         color: $light-gray;
     }
     &__item {
         position: relative;
+        &:hover, &:active {
+            input {
+                border-color: $dark-blue;
+            }
+        }
         &--tel {
             input::placeholder {
                 color: $main-color;
@@ -575,6 +581,14 @@ h1.h2 {
                 }
             }
 
+        }
+        &.error {
+            input {
+                border-color: #ac0505;
+            }
+            .form-error {
+                display: block;
+            }
         }
     }
     &__placeholder {
@@ -611,6 +625,17 @@ h1.h2 {
         &__txt {
             line-height: 140%;
         }
+    }
+}
+.form-error {
+    font-size: 16px;
+    color: #ac0505;
+    line-height: 116%;
+    text-align: left!important;
+    margin-top: 5px;
+    margin-left: 5px;
+    @media (max-width: $bp4) {
+        font-size: 14px;
     }
 }
 .question-form {

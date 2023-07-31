@@ -733,6 +733,9 @@ h1.h2 {
   border: 1px solid #ffffff;
   border-radius: 10px;
   color: #313534;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
 }
 
 .form input::-webkit-input-placeholder {
@@ -760,6 +763,11 @@ h1.h2 {
   position: relative;
 }
 
+.form__item:hover input,
+.form__item:active input {
+  border-color: #46A7DF;
+}
+
 .form__item--tel input::-webkit-input-placeholder {
   color: #313534;
 }
@@ -782,6 +790,14 @@ h1.h2 {
 
 .form__item--tel:hover .form__placeholder {
   display: none !important;
+}
+
+.form__item.error input {
+  border-color: #ac0505;
+}
+
+.form__item.error .form-error {
+  display: block;
 }
 
 .form__placeholder {
@@ -817,6 +833,15 @@ h1.h2 {
 .form .small-btn {
   width: 100%;
   margin-bottom: 10px;
+}
+
+.form-error {
+  font-size: 16px;
+  color: #ac0505;
+  line-height: 116%;
+  text-align: left !important;
+  margin-top: 5px;
+  margin-left: 5px;
 }
 
 .question-form__header {
@@ -6570,6 +6595,10 @@ h1.h2 {
 
   .stroke-btn {
     width: 100%;
+  }
+
+  .form-error {
+    font-size: 14px;
   }
 
   .question-form {

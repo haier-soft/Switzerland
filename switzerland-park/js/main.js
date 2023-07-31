@@ -657,13 +657,15 @@ fancyItems.forEach(item => {
 
 })
 //map-content animation
-gsap.from('.main-map__content', {
-  x: 100, 
-  duration: 1, 
-  ease: "power2.out",
-  scrollTrigger: {
-    trigger: '.main-map__content',
-    start: "30px bottom",
-    toggleActions: "play none none reverse",
-  }
-})
+if (document.querySelector('.main-map__content')) {
+  gsap.from('.main-map__content', {
+    x: 100, 
+    duration: 1, 
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: '.main-map__content',
+      start: "30px bottom",
+      toggleActions: "play none none reverse",
+    }
+  })
+}

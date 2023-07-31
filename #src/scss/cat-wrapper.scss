@@ -609,13 +609,5 @@
             width: 220px;
             height: 210px;
         }
-        &__header{
-            flex-direction: column-reverse;
-            align-items: normal;
-        }
-        &__status {
-            margin-bottom: 20px;
-            text-align: right;
-        }
     }
 }

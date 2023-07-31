@@ -7832,21 +7832,6 @@ h1.h2 {
     width: 220px;
     height: 210px;
   }
-
-  .catalog-cat__header {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    -webkit-box-align: normal;
-    -ms-flex-align: normal;
-    align-items: normal;
-  }
-
-  .catalog-cat__status {
-    margin-bottom: 20px;
-    text-align: right;
-  }
 }
 
 @media (max-width: 330px) {

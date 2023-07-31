@@ -688,6 +688,7 @@ h1.h2 {
 }
 
 .swiper-slide {
+  display: block;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-box-flex: 0;

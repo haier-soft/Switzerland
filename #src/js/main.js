@@ -1,7 +1,7 @@
 const header = document.querySelector(".header")
 const menu = document.querySelector('.header__body');
 const iconMenu = document.querySelector('.icon-menu');
-const section = document.querySelectorAll("section")  
+const section = document.querySelectorAll("section")
 const fixedBlocks = document.querySelectorAll(".fixed-block")
 const modalShowBtn = document.querySelectorAll(".modal-show-btn")
 const modal = document.querySelectorAll(".modal")
@@ -27,7 +27,7 @@ window.addEventListener('orientationchange', windoOnResize);
 function enableScroll() {
   if (fixedBlocks) {
     fixedBlocks.forEach(block => block.style.paddingRight = '0px')
-  } 
+  }
   document.body.style.paddingRight = '0px'
   document.body.classList.remove("no-scroll")
 }
@@ -120,14 +120,14 @@ modal.forEach(item => {
     closeModal(item)
   })
   item.addEventListener("click", e => {
-    if(!(window.innerWidth > 1260 && item.classList.contains("mob-modal")) && !item.querySelector(".modal__content").contains(e.target)) {
+    if (!(window.innerWidth > 1260 && item.classList.contains("mob-modal")) && !item.querySelector(".modal__content").contains(e.target)) {
       closeModal(item)
     }
   })
 })
 //close mobile modal on resize
 document.querySelectorAll(".mob-modal").forEach(mod => {
-  window.addEventListener("resize", ()=> {
+  window.addEventListener("resize", () => {
     if (mod.classList.contains("open") && window.innerWidth > 1260) {
       closeModal(mod)
     }
@@ -150,40 +150,39 @@ iconMenu.addEventListener("click", () => {
 //show/unshow fixed btn
 if (section && section[1]) {
   window.addEventListener("scroll", () => {
-    let windowTop = window.pageYOffset || document.documentElement.scrollTop; 
+    let windowTop = window.pageYOffset || document.documentElement.scrollTop;
     if (windowTop > section[1].getBoundingClientRect().top) {
       if (window.innerHeight - document.querySelector(".footer__top").getBoundingClientRect().bottom + 30 >= 0) {
-        fixedBtn.classList.remove("intersect","show")
+        fixedBtn.classList.remove("intersect", "show")
       } else {
-        fixedBtn.classList.add("intersect","show")
-      }   
+        fixedBtn.classList.add("intersect", "show")
+      }
     } else {
-      fixedBtn.classList.remove("intersect","show")
+      fixedBtn.classList.remove("intersect", "show")
     }
   })
-} 
+}
 //show/unshow header fixed btn
-window.addEventListener("scroll", ()=> {
+window.addEventListener("scroll", () => {
   if (window.innerWidth <= 767 && window.innerHeight - document.querySelector(".footer__top").getBoundingClientRect().bottom + 30 >= 0) {
     headerBtn.style.transform = "translateY(100%)"
   } else {
     headerBtn.style.transform = "translateY(0%)"
-  } 
+  }
 })
 //mask input
 const inp = document.querySelectorAll('input[type=tel]')
- if (inp) {
+if (inp) {
   inp.forEach(item => {
-  item.addEventListener("focus", () => {
+    item.addEventListener("focus", () => {
       item.parentNode.querySelector(".form__placeholder").style.display = "none"
+    })
+    item.addEventListener("blur", () => {
+      if (item.value.length === 0) item.parentNode.querySelector(".form__placeholder").style.display = "block"
+    })
+    Inputmask({ "mask": "+7 999 999-99-99" }).mask(item);
   })
-  item.addEventListener("blur", () => {
-    if (item.value.length === 0) item.parentNode.querySelector(".form__placeholder").style.display = "block"
-  }) 
-  Inputmask({ "mask": "+7 999 999-99-99" }).mask(item);
-  })
-} 
-
+}
 //features swiper
 if (document.querySelector(".features__swiper")) {
   let init = false
@@ -194,6 +193,7 @@ if (document.querySelector(".features__swiper")) {
         init = true
         featuresSwiper = new Swiper('.features__swiper', {
           slidesPerView: 1,
+          slidesPerGroup: 1,
           observer: true,
           observeParents: true,
           pagination: {
@@ -212,7 +212,7 @@ if (document.querySelector(".features__swiper")) {
   initFeaturesSwiper()
   window.addEventListener("resize", initFeaturesSwiper)
 }
-  //item-building images count
+//item-building images count
 if (document.querySelector(".item-building")) {
   const buildItm = document.querySelectorAll(".item-building")
   buildItm.forEach(item => {
@@ -222,175 +222,179 @@ if (document.querySelector(".item-building")) {
     }
   })
 }
-//building swiper
-if (document.querySelector(".main-building__swiper")) {
-  const mainBuildSwiper = new Swiper(".main-building__swiper", {
-    slidesPerView: 1,
-    centeredSlides: true,
-    spaceBetween: 10,
-    observer: true,
-    observeParents: true,
-    speed: 800,
-    initialSlide: 1,
-    breakpoints: {
-      480.98: {
-        slidesPerView: 1.3,
-        spaceBetween: 20
+$(document).ready(function () {
+  //building swiper
+  if (document.querySelector(".main-building__swiper")) {
+    const mainBuildSwiper = new Swiper(".main-building__swiper", {
+      slidesPerView: 1,
+      slidesPerGroup: 1,
+      centeredSlides: true,
+      spaceBetween: 10,
+      observer: true,
+      observeParents: true,
+      speed: 800,
+      initialSlide: 1,
+      breakpoints: {
+        480.98: {
+          slidesPerView: 1.3,
+          spaceBetween: 20
+        },
+        767.98: {
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        991.98: {
+          slidesPerView: 2,
+          spaceBetween: 30,
+        },
+        1520.98: {
+          slidesPerView: 2,
+          spaceBetween: 40,
+        },
       },
-      767.98: {
-        slidesPerView: 2,
-        spaceBetween: 20
-      },
-      991.98: {
-        slidesPerView: 2,
-        spaceBetween: 30,
-      },
-      1520.98: {
-        slidesPerView: 2,
-        spaceBetween: 40,
-      },
-    },
-    navigation: {
-      nextEl: '.main-building-btn--next',
-      prevEl: '.main-building-btn--prev',
-    }
-  })
-}
-//improvements swiper
-if (document.querySelector(".improvements__swiper")) {
-  const improvmntSwiper = new Swiper('.improvements__swiper', {
-    slidesPerView: 1.14,
-    observer: true,
-    observeParents: true,
-    speed: 800,
-    initialSlide: 1,
-    centeredSlides: true,
-    breakpoints: {
-      480.98: {
-        slidesPerView: 1.35,
-      },
-      767.98: {
-        slidesPerView: 1.65,
-      },
-      991.98: {
-        slidesPerView: 2.4,
-        centeredSlides: false,
-      },
-      1260.98: {
-        slidesPerView: 3,
-        centeredSlides: false,
+      navigation: {
+        nextEl: '.main-building-btn--next',
+        prevEl: '.main-building-btn--prev',
       }
-    }
-  })
-}
-// flat__images slider
-if (document.querySelector(".flat")) {
-  const btn = document.querySelector(".flat__btn")
-  let thumbSwiper
-  let flatSwiperMob
-  let flatSwiperDesk
-  let flatSwiperMobInit = false
-  let flatSwiperDeskInit = false
-  function flatSwiperInit() {
-    if (window.innerWidth <= 991) {
-      if (flatSwiperDeskInit) {
-      flatSwiperDesk.destroy()
-      thumbSwiper.destroy()
-      flatSwiperDeskInit = false
-      }
-      if (!flatSwiperMobInit) {
-        flatSwiperMob = new Swiper(".flat__mainswiper", {
-          slidesPerView: 1,
-          slidesPerGroup: 1,
-          observer: true,
-          observeParents: true,
-          spaceBetween: 5, 
-          autoplay: {
-            delay: 3500,
-            pauseOnMouseEnter: true,
-            disableOnInteraction: false
-          },
-          breakpoints: {
-            767.98: {
-              spaceBetween: 20, 
-            }
-          },
-          speed: 800
-        })
-        flatSwiperMobInit = true
-        btn.addEventListener("click", () => {
-          flatSwiperMob.slides[flatSwiperMob.activeIndex].click()
-        })
-      }
-    } else {
-      if (flatSwiperMobInit) {
-      flatSwiperMob.destroy()
-      flatSwiperMobInit = false
-      }
-      if (!flatSwiperDeskInit) {
-        thumbSwiper = new Swiper(".flat__thumbswiper", {
-          slidesPerView: 3,
-          spaceBetween: 20,
-          observer: true,
-          observeParents: true,
-          freeMode: true,
-          speed: 800,
-        })
-        flatSwiperDesk = new Swiper(".flat__mainswiper", {
-          slidesPerView: 1,
-          observer: true,
-          observeParents: true,
-          effect: 'fade',
-          thumbs: {
-            swiper: thumbSwiper,
-          },
-          speed: 300
-        })
-        flatSwiperDeskInit = true
-        btn.addEventListener("click", () => {
-          flatSwiperDesk.slides[flatSwiperDesk.activeIndex].click()
-        })
-      }
-    }
+    })
   }
-flatSwiperInit()
-window.addEventListener("resize", flatSwiperInit)
-}
-window.addEventListener("DOMContentLoaded", () => {
-  //init swiper and fix it on scroll
-if (document.querySelector(".infra__swiper")) {
-  const infra = document.querySelector(".infra__swiper")
-  let slideCount = infra.querySelectorAll(".swiper-slide").length
-  let infraSwiper = new Swiper(infra, {
-    slidesPerView: 1,
-    observer: true,
-    observeParents: true,
-    pagination: {
-      el: '.infra__pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    effect: 'fade',
-    speed: 700
-  })
-  let activeIndex = {value: 0}
-  let ifraSwiperAnim = gsap.to(activeIndex, {
-    value: slideCount - 1,
-    scrollTrigger: {
-      trigger: ".infra .container",
-      start: "center center",
-      end: "+=" + 300 * slideCount,
-      pin: true,
-      scrub: true,
-      invalidateOnRefresh: true,
-      onUpdate: (self) => {
-        infraSwiper.slideTo(Math.round(activeIndex.value))
-      },
+  //improvements swiper
+  if (document.querySelector(".improvements__swiper")) {
+    const improvmntSwiper = new Swiper('.improvements__swiper', {
+      slidesPerView: 1.14,
+      slidesPerGroup: 1,
+      observer: true,
+      observeParents: true,
+      speed: 800,
+      initialSlide: 1,
+      centeredSlides: true,
+      breakpoints: {
+        480.98: {
+          slidesPerView: 1.35,
+        },
+        767.98: {
+          slidesPerView: 1.65,
+        },
+        991.98: {
+          slidesPerView: 2.4,
+          centeredSlides: false,
+        },
+        1260.98: {
+          slidesPerView: 3,
+          centeredSlides: false,
+        }
+      }
+    })
+  }
+  // flat__images slider
+  if (document.querySelector(".flat")) {
+    const btn = document.querySelector(".flat__btn")
+    let thumbSwiper
+    let flatSwiperMob
+    let flatSwiperDesk
+    let flatSwiperMobInit = false
+    let flatSwiperDeskInit = false
+    function flatSwiperInit() {
+      if (window.innerWidth <= 991) {
+        if (flatSwiperDeskInit) {
+          flatSwiperDesk.destroy()
+          thumbSwiper.destroy()
+          flatSwiperDeskInit = false
+        }
+        if (!flatSwiperMobInit) {
+          flatSwiperMob = new Swiper(".flat__mainswiper", {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            observer: true,
+            observeParents: true,
+            spaceBetween: 5,
+            autoplay: {
+              delay: 3500,
+              pauseOnMouseEnter: true,
+              disableOnInteraction: false
+            },
+            breakpoints: {
+              767.98: {
+                spaceBetween: 20,
+              }
+            },
+            speed: 800
+          })
+          flatSwiperMobInit = true
+          btn.addEventListener("click", () => {
+            flatSwiperMob.slides[flatSwiperMob.activeIndex].click()
+          })
+        }
+      } else {
+        if (flatSwiperMobInit) {
+          flatSwiperMob.destroy()
+          flatSwiperMobInit = false
+        }
+        if (!flatSwiperDeskInit) {
+          thumbSwiper = new Swiper(".flat__thumbswiper", {
+            slidesPerView: 3,
+            slidesPerGroup: 1,
+            spaceBetween: 20,
+            observer: true,
+            observeParents: true,
+            freeMode: true,
+            speed: 800,
+          })
+          flatSwiperDesk = new Swiper(".flat__mainswiper", {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            observer: true,
+            observeParents: true,
+            effect: 'fade',
+            thumbs: {
+              swiper: thumbSwiper,
+            },
+            speed: 300
+          })
+          flatSwiperDeskInit = true
+          btn.addEventListener("click", () => {
+            flatSwiperDesk.slides[flatSwiperDesk.activeIndex].click()
+          })
+        }
+      }
     }
-  })
-}
-})
-//filter-form
+    flatSwiperInit()
+    window.addEventListener("resize", flatSwiperInit)
+  }
+  //init swiper and fix it on scroll
+  if (document.querySelector(".infra__swiper")) {
+    const infra = document.querySelector(".infra__swiper")
+    let slideCount = infra.querySelectorAll(".swiper-slide").length
+    let infraSwiper = new Swiper(infra, {
+      slidesPerView: 1,
+      slidesPerGroup: 1,
+      observer: true,
+      observeParents: true,
+      pagination: {
+        el: '.infra__pagination',
+        type: 'bullets',
+        clickable: true
+      },
+      effect: 'fade',
+      speed: 700
+    })
+    let activeIndex = { value: 0 }
+    let ifraSwiperAnim = gsap.to(activeIndex, {
+      value: slideCount - 1,
+      scrollTrigger: {
+        trigger: ".infra .container",
+        start: "center center",
+        end: "+=" + 300 * slideCount,
+        pin: true,
+        scrub: true,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          infraSwiper.slideTo(Math.round(activeIndex.value))
+        },
+      }
+    })
+  }
+  //filter-form
 if (filter) {
   filter.querySelectorAll("input").forEach(inp => {
     inp.addEventListener("change", () => {
@@ -416,7 +420,7 @@ if (filter) {
     });
     const priceStart = document.getElementById("price-start");
     const priceEnd = document.getElementById("price-end");
-  
+
     priceStart.addEventListener("change", () => {
       priceSlider.noUiSlider.set([priceStart.value, null])
     });
@@ -424,7 +428,7 @@ if (filter) {
       priceSlider.noUiSlider.set([null, priceEnd.value])
     });
     let priceValues = [priceStart, priceEnd];
-  
+
     let updateCount = 0
     priceSlider.noUiSlider.on('update', function (values, handle) {
       updateCount++
@@ -434,7 +438,7 @@ if (filter) {
       }
     });
   }
-   //floor slider
+  //floor slider
   if (floorSlider) {
     noUiSlider.create(floorSlider, {
       start: [6, 10],
@@ -446,7 +450,7 @@ if (filter) {
     });
     const floorStart = document.getElementById("floor-start");
     const floorEnd = document.getElementById("floor-end");
-      floorStart.addEventListener("change", () => {
+    floorStart.addEventListener("change", () => {
       floorSlider.noUiSlider.set([floorStart.value, null])
     });
     floorEnd.addEventListener("change", () => {
@@ -462,11 +466,11 @@ if (filter) {
       }
     });
   }
-  document.querySelector(".filter__header").addEventListener("click", () =>{
+  document.querySelector(".filter__header").addEventListener("click", () => {
     if (window.innerWidth <= 1260) {
       openModal(document.querySelector(".mob-modal"))
-    }   
-  }) 
+    }
+  })
 }
 // change image on mousemove/touchmove in catalog__block
 if (document.querySelector(".catalog-cat__main")) {
@@ -511,7 +515,7 @@ if (document.querySelector(".catalog-cat__main")) {
 }
 // scheme-popup position on mousemove
 if (schemePopup) {
-  document.querySelectorAll(".item-apartaments .on-sale").forEach(item => {  
+  document.querySelectorAll(".item-apartaments .on-sale").forEach(item => {
     function move(xPos, yPos) {
       schemePopup.classList.add("open")
       let top = item.getBoundingClientRect().top
@@ -526,7 +530,7 @@ if (schemePopup) {
       } else {
         schemePopup.style.top = yPos + 25 + "px"
       }
-    } 
+    }
     item.addEventListener("mousemove", (e) => {
       if (window.innerWidth > 1260) {
         move(e.clientX, e.clientY)
@@ -539,7 +543,7 @@ if (schemePopup) {
       if (window.innerWidth <= 1260) {
         e.preventDefault()
         openModal(schemePopup)
-      }      
+      }
     })
   })
 }
@@ -588,11 +592,11 @@ if (document.querySelector(".main-choice__img")) {
       choiceImg.style.transitionDuration = '.5s'
       const startY = e.clientY
       const startX = e.clientX
-      choiceImg.addEventListener("mousemove",(event)=> {
+      choiceImg.addEventListener("mousemove", (event) => {
         choiceImg.style.transitionDuration = '0s'
         let diffX = event.clientX - startX
         let diffY = event.clientY - startY
-        choiceImg.style.transform = 'translate3d('+ diffX / 30 +'px,'+ diffY / 30 +'px,0)'
+        choiceImg.style.transform = 'translate3d(' + diffX / 30 + 'px,' + diffY / 30 + 'px,0)'
       })
       choiceImg.addEventListener("mouseleave", () => {
         choiceImg.style.transform = 'translate3d(0,0,0)'
@@ -606,12 +610,12 @@ const fancyItems = document.querySelectorAll("[data-fancy]")
 fancyItems.forEach(item => {
   item.addEventListener("click", () => {
     let imgSrc = []
-    let objectFit = item.getAttribute("data-fit") ? item.getAttribute("data-fit"): ""
+    let objectFit = item.getAttribute("data-fit") ? item.getAttribute("data-fit") : ""
     let val = item.getAttribute("data-fancy")
     fancyItems.forEach(el => {
       if (!el.closest(".swiper-slide-duplicate") && el.getAttribute("data-fancy") === val) {
-      imgSrc.push(el.getAttribute("data-src"))
-      }   
+        imgSrc.push(el.getAttribute("data-src"))
+      }
     })
     let initialSl = imgSrc.indexOf(item.getAttribute("data-src"))
     document.querySelector("footer").insertAdjacentHTML('afterend', `
@@ -626,7 +630,7 @@ fancyItems.forEach(item => {
                                 <img src=${item} alt="">
                             </div>
                         </div>`
-                      ).join("")}
+    ).join("")}
                    </div>
                </div>
            </div>
@@ -635,6 +639,7 @@ fancyItems.forEach(item => {
   `);
     let fancySwiper = new Swiper(".fancy-swiper", {
       slidesPerView: 1,
+      slidesPerGroup: 1,
       observer: true,
       observeParents: true,
       centeredSlides: true,
@@ -665,8 +670,8 @@ fancyItems.forEach(item => {
 //map-content animation
 if (document.querySelector('.main-map__content')) {
   gsap.from('.main-map__content', {
-    x: 100, 
-    duration: 1, 
+    x: 100,
+    duration: 1,
     ease: "power2.out",
     scrollTrigger: {
       trigger: '.main-map__content',
@@ -675,3 +680,5 @@ if (document.querySelector('.main-map__content')) {
     }
   })
 }
+})
+

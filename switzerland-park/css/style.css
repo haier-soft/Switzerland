@@ -983,6 +983,10 @@ h1.h2 {
   margin: 0 auto;
 }
 
+[data-fancy] img {
+  pointer-events: none;
+}
+
 .modal {
   display: none;
   position: fixed;

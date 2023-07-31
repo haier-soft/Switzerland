@@ -763,3 +763,8 @@ h1.h2 {
         }
     }
 }
+[data-fancy] {
+img {
+    pointer-events: none;
+}
+}

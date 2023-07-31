@@ -3529,8 +3529,6 @@ h1.h2 {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 330px;
   flex: 0 0 330px;
-  position: sticky;
-  top: 0;
   margin-right: 43px;
 }
 
@@ -5705,7 +5703,6 @@ h1.h2 {
 
   .filter {
     margin: 0 0 40px 0;
-    position: static;
   }
 
   .filter__header {

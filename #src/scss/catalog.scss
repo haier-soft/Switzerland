@@ -114,8 +114,6 @@
 }
 .filter {
     flex: 0 0 330px;
-    position: sticky;
-    top: 0;
     margin-right: 43px;
     &__header {
         margin-bottom: 20px;
@@ -142,7 +140,6 @@
     }
     @media (max-width: $bp2) {
         margin: 0 0 40px 0;
-        position: static;
         &__header {
             padding: 12.5px 40px;
             display: flex;

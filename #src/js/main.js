@@ -183,7 +183,37 @@ const inp = document.querySelectorAll('input[type=tel]')
   Inputmask({ "mask": "+7 999 999-99-99" }).mask(item);
   })
 } 
-//item-building images count
+
+//features swiper
+if (document.querySelector(".features__swiper")) {
+  let init = false
+  let featuresSwiper
+  function initFeaturesSwiper() {
+    if (window.innerWidth <= 767) {
+      if (!init) {
+        init = true
+        featuresSwiper = new Swiper('.features__swiper', {
+          slidesPerView: 1,
+          observer: true,
+          observeParents: true,
+          pagination: {
+            el: '.features__pagination',
+            type: 'bullets',
+            clickable: true
+          },
+          speed: 800,
+        })
+      }
+    } else if (window.innerWidth > 767 && init) {
+      init = false
+      featuresSwiper.destroy()
+    }
+  }
+  initFeaturesSwiper()
+  window.addEventListener("resize", initFeaturesSwiper)
+}
+window.addEventListener("DOMContentLoaded", () => {
+  //item-building images count
 if (document.querySelector(".item-building")) {
   const buildItm = document.querySelectorAll(".item-building")
   buildItm.forEach(item => {
@@ -253,34 +283,6 @@ if (document.querySelector(".improvements__swiper")) {
       }
     }
   })
-}
-//features swiper
-if (document.querySelector(".features__swiper")) {
-  let init = false
-  let featuresSwiper
-  function initFeaturesSwiper() {
-    if (window.innerWidth <= 767) {
-      if (!init) {
-        init = true
-        featuresSwiper = new Swiper('.features__swiper', {
-          slidesPerView: 1,
-          observer: true,
-          observeParents: true,
-          pagination: {
-            el: '.features__pagination',
-            type: 'bullets',
-            clickable: true
-          },
-          speed: 800,
-        })
-      }
-    } else if (window.innerWidth > 767 && init) {
-      init = false
-      featuresSwiper.destroy()
-    }
-  }
-  initFeaturesSwiper()
-  window.addEventListener("resize", initFeaturesSwiper)
 }
 //init swiper and fix it on scroll
 if (document.querySelector(".infra__swiper")) {
@@ -387,6 +389,7 @@ if (document.querySelector(".flat")) {
 flatSwiperInit()
 window.addEventListener("resize", flatSwiperInit)
 }
+})
 //filter-form
 if (filter) {
   filter.querySelectorAll("input").forEach(inp => {

@@ -32,17 +32,22 @@
         z-index: -1;
     }
     &__btn {
-        flex: 0 0 50%;      
+        flex: 0 0 50%;   
+        height: 100%;   
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         transition: all .5s ease-out;
+        span {
+            pointer-events: none;
+        }
         svg {
             flex: 0 0 40px;
             width: 40px;
             height: 40px;
             transition: all .5s ease-out 0s;
+            pointer-events: none;
         }
         &.active {
             pointer-events: none;

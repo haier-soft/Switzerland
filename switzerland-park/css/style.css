@@ -2547,6 +2547,7 @@ h1.h2 {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 50%;
   flex: 0 0 50%;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2562,6 +2563,10 @@ h1.h2 {
   transition: all 0.5s ease-out;
 }
 
+.views__btn span {
+  pointer-events: none;
+}
+
 .views__btn svg {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 40px;
@@ -2571,6 +2576,7 @@ h1.h2 {
   -webkit-transition: all 0.5s ease-out 0s;
   -o-transition: all 0.5s ease-out 0s;
   transition: all 0.5s ease-out 0s;
+  pointer-events: none;
 }
 
 .views__btn.active {

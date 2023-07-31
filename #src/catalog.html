@@ -33,9 +33,10 @@
                             <!--filter-form-->
                             <form action="" class="modal mob-modal filter-form"
                                 onreset="event.preventDefault();filter-filterFormOnReset(this)">
-                                <div class="modal__overlay filter-form__inner">                                                    
+                                <div class="modal__overlay filter-form__inner">
                                     <div class="modal__content filter-form__content">
-                                        <button type="button" class="modal__close filter-form__close" aria-label="Закрыть всплывающее окно"></button>
+                                        <button type="button" class="modal__close filter-form__close"
+                                            aria-label="Закрыть всплывающее окно"></button>
                                         <div class="modal__scroll">
                                             <div class="filter-form__sec">
                                                 <div class="page-lbl">Количество комнат</div>
@@ -63,11 +64,13 @@
                                                 <div class="range range--price">
                                                     <div class="range__values">
                                                         <div class="range__value">
-                                                            <input id="price-start" type="number" step="any" autocomplete="off">
+                                                            <input id="price-start" type="number" step="any"
+                                                                autocomplete="off">
                                                         </div>
                                                         <span></span>
                                                         <div class="range__value">
-                                                            <input id="price-end" type="number" step="any" autocomplete="off">
+                                                            <input id="price-end" type="number" step="any"
+                                                                autocomplete="off">
                                                         </div>
                                                     </div>
                                                     <div class="range__slider price-slider"></div>
@@ -449,6 +452,32 @@
         <!--footer-->
         @@include('_footer.html')
         @@include('_modal.html')
+        <!--scheme-popup-->
+        <div class="modal mob-modal scheme-popup">
+            <div class="modal__overlay scheme-popup__inner">
+                <div class="modal__content scheme-popup__content">
+                    <button type="button" class="modal__close"></button>
+                    <div class="modal__scroll">
+                        <div class="scheme-popup__header">
+                            <h5><span>1-комнатная</span><span>№ 124</span></h5>
+                            <h6><span>36 кв. м.</span><span>1 этаж</span></h6>
+                        </div>
+                        <a href="#" class="scheme-popup__preview">
+                            <img src="img/cat-2.png" alt="">
+                            <div class="catalog-compass">
+                                <svg>
+                                    <use xlink:href="img/icons/sprite.svg#compass"></use>
+                                </svg>
+                            </div>
+                        </a>
+                        <div class="scheme-popup__footer">
+                            <div class="h5 scheme-popup__price">4 452 000 руб</div>
+                            <a href="#" class="btn stroke-btn">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     @@include('_js.html')
 </body>

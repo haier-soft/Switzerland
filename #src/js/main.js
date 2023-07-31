@@ -184,13 +184,13 @@ if (inp) {
   })
 }
 //features swiper
+let initFeatSwip = false
+let featuresSwiper
 if (document.querySelector(".features__swiper")) {
-  let init = false
-  let featuresSwiper
   function initFeaturesSwiper() {
     if (window.innerWidth <= 767) {
-      if (!init) {
-        init = true
+      if (!initFeatSwip) {
+        initFeatSwip = true
         featuresSwiper = new Swiper('.features__swiper', {
           slidesPerView: 1,
           slidesPerGroup: 1,
@@ -204,8 +204,8 @@ if (document.querySelector(".features__swiper")) {
           speed: 800,
         })
       }
-    } else if (window.innerWidth > 767 && init) {
-      init = false
+    } else if (window.innerWidth > 767 && initFeatSwip) {
+      initFeatSwip = false
       featuresSwiper.destroy()
     }
   }

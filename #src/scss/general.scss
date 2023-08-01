@@ -544,38 +544,30 @@ h1.h2 {
         font-weight: 400;
         font-size: 18px;
         line-height: 116%;
-        @media (max-width: $bp1) {
-            //font-size: 16px;
-        }
         @media (max-width: $bp3) {
             font-size: 14px;
         }
-        @media (max-width: $bp4) {
-           // font-size: 13px;
-        }
-    }
-    input {
-        padding: 15px;
-        background: $white;
-        border: 1px solid $white;
-        border-radius: 10px;
-        color: $main-color;
-        transition: all .2s linear;
-    }
-    input::placeholder, &__placeholder {
-        color: $light-gray;
     }
     &__item {
+        color: $main-color;
         position: relative;
+        input {
+            color: $main-color;
+            padding: 15px;
+            background: $white;
+            border: 1px solid $white;
+            border-radius: 10px;
+            transition: all .2s linear;
+            &::placeholder {
+                color: $light-gray!important;
+            }
+        }
         &:hover, &:active {
             input {
                 border-color: $dark-blue;
             }
         }
-        &--tel {
-            input::placeholder {
-                color: $main-color;
-            }       
+        &--tel {      
             &:hover {
                 .form__placeholder {
                     display: none !important;
@@ -593,6 +585,7 @@ h1.h2 {
         }
     }
     &__placeholder {
+        color: $light-gray;
         padding: 16px;
         position: absolute;
         top: 0;

@@ -728,65 +728,45 @@ h1.h2 {
   line-height: 116%;
 }
 
-.form input {
+.form__item {
+  color: #313534;
+  position: relative;
+}
+
+.form__item input {
+  color: #313534;
   padding: 15px;
   background: #ffffff;
   border: 1px solid #ffffff;
   border-radius: 10px;
-  color: #313534;
   -webkit-transition: all 0.2s linear;
   -o-transition: all 0.2s linear;
   transition: all 0.2s linear;
 }
 
-.form input::-webkit-input-placeholder {
-  color: rgba(22, 26, 25, 0.4);
+.form__item input::-webkit-input-placeholder {
+  color: rgba(22, 26, 25, 0.4) !important;
 }
 
-.form input::-moz-placeholder {
-  color: rgba(22, 26, 25, 0.4);
+.form__item input::-moz-placeholder {
+  color: rgba(22, 26, 25, 0.4) !important;
 }
 
-.form input:-ms-input-placeholder {
-  color: rgba(22, 26, 25, 0.4);
+.form__item input:-ms-input-placeholder {
+  color: rgba(22, 26, 25, 0.4) !important;
 }
 
-.form input::-ms-input-placeholder {
-  color: rgba(22, 26, 25, 0.4);
+.form__item input::-ms-input-placeholder {
+  color: rgba(22, 26, 25, 0.4) !important;
 }
 
-.form input::placeholder,
-.form__placeholder {
-  color: rgba(22, 26, 25, 0.4);
-}
-
-.form__item {
-  position: relative;
+.form__item input::placeholder {
+  color: rgba(22, 26, 25, 0.4) !important;
 }
 
 .form__item:hover input,
 .form__item:active input {
   border-color: #46A7DF;
-}
-
-.form__item--tel input::-webkit-input-placeholder {
-  color: #313534;
-}
-
-.form__item--tel input::-moz-placeholder {
-  color: #313534;
-}
-
-.form__item--tel input:-ms-input-placeholder {
-  color: #313534;
-}
-
-.form__item--tel input::-ms-input-placeholder {
-  color: #313534;
-}
-
-.form__item--tel input::placeholder {
-  color: #313534;
 }
 
 .form__item--tel:hover .form__placeholder {
@@ -802,6 +782,7 @@ h1.h2 {
 }
 
 .form__placeholder {
+  color: rgba(22, 26, 25, 0.4);
   padding: 16px;
   position: absolute;
   top: 0;

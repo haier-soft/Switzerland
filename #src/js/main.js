@@ -289,11 +289,11 @@ if (document.querySelector(".improvements__swiper")) {
 // flat__images slider
 let flatSwiperMobInit = false
 let flatSwiperDeskInit = false
+const btn = document.querySelector(".flat__btn")
+let thumbSwiper
+let flatSwiperMob
+let flatSwiperDesk
 if (document.querySelector(".flat")) {
-  const btn = document.querySelector(".flat__btn")
-  let thumbSwiper
-  let flatSwiperMob
-  let flatSwiperDesk
   function flatSwiperInit() {
     if (window.innerWidth <= 991) {
       if (flatSwiperDeskInit) {

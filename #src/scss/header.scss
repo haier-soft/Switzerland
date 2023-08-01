@@ -180,7 +180,6 @@
         &__body {
             top: 208px;
             bottom: 0;
-            height: calc(100% - 208px);
             max-height: none;
         }
         &__cols {
@@ -206,7 +205,6 @@
     @media (max-width: $bp3) {
         &__body {
             top: 205px;
-            height: calc(100% - 205px);
         }
     }
     @media (max-width: $bp4) {
@@ -230,7 +228,6 @@
         }
         &__body {
             top: 129px;
-            height: calc(100% - 129px);
         }
         &__phones {
             grid-column: 1/3;

@@ -5375,7 +5375,6 @@ h1.h2 {
   .header__body {
     top: 208px;
     bottom: 0;
-    height: calc(100% - 208px);
     max-height: none;
   }
 
@@ -5980,7 +5979,6 @@ h1.h2 {
 
   .header__body {
     top: 205px;
-    height: calc(100% - 205px);
   }
 
   .breadcrumbs ul li {
@@ -6755,7 +6753,6 @@ h1.h2 {
 
   .header__body {
     top: 129px;
-    height: calc(100% - 129px);
   }
 
   .header__phones {

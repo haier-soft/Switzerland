@@ -135,6 +135,7 @@ document.querySelectorAll(".mob-modal").forEach(mod => {
 })
 //drop menu
 iconMenu.addEventListener("click", () => {
+  window.scrollTo(0, 0)
   if (iconMenu.classList.contains("active")) {
     iconMenu.classList.remove("active");
     iconMenu.setAttribute('aria-label', 'Открыть меню');

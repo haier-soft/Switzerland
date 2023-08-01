@@ -151,6 +151,9 @@
             .header__btn {
                 display: none;
             }
+            .header__body {
+               top: 129px;
+            }
         }
         &__top {
             padding: 24px 0;
@@ -185,7 +188,7 @@
             }
         }
         &__body {
-            top: 129px;
+            top: 208px;
             bottom: 0;
             max-height: none;
         }
@@ -209,6 +212,11 @@
             margin-bottom: 20px;
         }
     }
+    @media (max-width: $bp3) {
+        &__body {
+            top: 205px;
+        }
+    }
     @media (max-width: $bp4) {
         .menu .h6 {
             font-size: 18px;
@@ -227,6 +235,9 @@
                 grid-template-rows: auto auto;
                 gap: 20px;
             }
+        }
+        &__body {
+            top: 129px;
         }
         &__phones {
             grid-column: 1/3;

@@ -5337,6 +5337,10 @@ h1.h2 {
     display: none;
   }
 
+  .header.no-btn .header__body {
+    top: 129px;
+  }
+
   .header__top {
     padding: 24px 0;
   }
@@ -5381,7 +5385,7 @@ h1.h2 {
   }
 
   .header__body {
-    top: 129px;
+    top: 208px;
     bottom: 0;
     max-height: none;
   }
@@ -5983,6 +5987,10 @@ h1.h2 {
   .about .page-content,
   .news-page .page-content {
     max-width: 100%;
+  }
+
+  .header__body {
+    top: 205px;
   }
 
   .breadcrumbs ul li {
@@ -6753,6 +6761,10 @@ h1.h2 {
     grid-template-columns: 1fr auto;
     grid-template-rows: auto auto;
     gap: 20px;
+  }
+
+  .header__body {
+    top: 129px;
   }
 
   .header__phones {

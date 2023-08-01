@@ -226,14 +226,7 @@ body {
 }
 
 .no-scroll {
-  position: fixed;
-  left: 0;
-  top: 0;
-  overflow: hidden;
-  width: 100%;
-  height: 100vh;
-  -ms-scroll-chaining: none;
-  overscroll-behavior: none;
+  overflow: hidden !important;
 }
 
 .container {

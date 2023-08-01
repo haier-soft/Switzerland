@@ -287,13 +287,13 @@ if (document.querySelector(".improvements__swiper")) {
   })
 }
 // flat__images slider
+let flatSwiperMobInit = false
+let flatSwiperDeskInit = false
 if (document.querySelector(".flat")) {
   const btn = document.querySelector(".flat__btn")
   let thumbSwiper
   let flatSwiperMob
   let flatSwiperDesk
-  let flatSwiperMobInit = false
-  let flatSwiperDeskInit = false
   function flatSwiperInit() {
     if (window.innerWidth <= 991) {
       if (flatSwiperDeskInit) {
@@ -379,20 +379,22 @@ if (document.querySelector(".infra__swiper")) {
     speed: 700
   })
   let activeIndex = { value: 0 }
-  let ifraSwiperAnim = gsap.to(activeIndex, {
-    value: slideCount - 1,
-    scrollTrigger: {
-      trigger: ".infra .container",
-      start: "center center",
-      end: "+=" + 300 * slideCount,
-      pin: true,
-      scrub: true,
-      invalidateOnRefresh: true,
-      onUpdate: (self) => {
-        infraSwiper.slideTo(Math.round(activeIndex.value))
-      },
-    }
-  })
+  setTimeout(() => {
+    let ifraSwiperAnim = gsap.to(activeIndex, {
+      value: slideCount - 1,
+      scrollTrigger: {
+        trigger: ".infra .container",
+        start: "center center",
+        end: "+=" + 300 * slideCount,
+        pin: true,
+        scrub: true,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          infraSwiper.slideTo(Math.round(activeIndex.value))
+        },
+      }
+    })
+  }, 100);
 }
 //filter-form
 if (filter) {

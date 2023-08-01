@@ -136,13 +136,16 @@ document.querySelectorAll(".mob-modal").forEach(mod => {
 //drop menu
 iconMenu.addEventListener("click", () => {
   window.scrollTo(0,0)
-  header.classList.toggle("fixed")
   if (iconMenu.classList.contains("active")) {
     iconMenu.classList.remove("active");
     iconMenu.setAttribute('aria-label', 'Открыть меню');
     menu.classList.remove("active");
+    header.classList.remove("fixed")
     enableScroll()
   } else {
+    if (window.innerWidth < 992) {
+      header.classList.add("fixed")
+     }
     iconMenu.classList.add("active");
     iconMenu.setAttribute('aria-label', 'Закрыть меню');
     menu.classList.add("active");

@@ -376,7 +376,8 @@ if (document.querySelector(".flat")) {
           slidesPerGroup: 1,
           spaceBetween: 20,
           observer: true,
-          observeParents: true
+          observeParents: true,
+          speed: 300
         })
         flatSwiperDesk = new Swiper(".flat__mainswiper", {
           slidesPerView: 1,

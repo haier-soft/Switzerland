@@ -22,7 +22,43 @@ function windoOnResize() {
 }
 window.addEventListener("resize", windoOnResize)
 window.addEventListener('orientationchange', windoOnResize);
-
+//init range slider
+function initSliders() {
+  let rangeSliders = filter.querySelectorAll(".range")
+  rangeSliders.forEach(item => {
+    let rangeStart = item.querySelector(".range-start")
+    let rangeEnd = item.querySelector(".range-end")
+    let rangeSlider = item.querySelector(".range__slider")
+    let start = +item.getAttribute("data-start")
+    let end = +item.getAttribute("data-end")
+    let min = +item.getAttribute("data-min")
+    let max = +item.getAttribute("data-max")
+    noUiSlider.create(rangeSlider, {
+      start: [start, end],
+      connect: true,
+      range: {
+        'min': min,
+        'max': max
+      }
+    });
+    rangeStart.addEventListener("change", () => {
+      rangeSlider.noUiSlider.set([rangeStart.value, null])
+      console.log(rangeSlider.noUiSlider)
+    });
+    rangeEnd.addEventListener("change", () => {
+      rangeSlider.noUiSlider.set([null, rangeEnd.value])
+    });
+    let rangeValues = [rangeStart, rangeEnd];
+    let updateCount = 0
+    rangeSlider.noUiSlider.on('update', function (values, handle) {
+      updateCount++
+      rangeValues[handle].value = item.classList.contains("integer") ? parseInt(values[handle]):  values[handle]
+      if (updateCount > 2) {
+        filterReset.classList.add("show")
+      }
+    });
+  })
+}
 //enable scroll
 function enableScroll() {
   if (fixedBlocks) {
@@ -135,7 +171,7 @@ document.querySelectorAll(".mob-modal").forEach(mod => {
 })
 //drop menu
 iconMenu.addEventListener("click", () => {
-  window.scrollTo(0,0)
+  window.scrollTo(0, 0)
   if (iconMenu.classList.contains("active")) {
     iconMenu.classList.remove("active");
     iconMenu.setAttribute('aria-label', 'Открыть меню');
@@ -145,7 +181,7 @@ iconMenu.addEventListener("click", () => {
   } else {
     if (window.innerWidth < 992) {
       header.classList.add("fixed")
-     }
+    }
     iconMenu.classList.add("active");
     iconMenu.setAttribute('aria-label', 'Закрыть меню');
     menu.classList.add("active");
@@ -399,8 +435,10 @@ if (document.querySelector(".infra__swiper")) {
     })
   }, 100);
 }
+
 //filter-form
 if (filter) {
+  initSliders()
   filter.querySelectorAll("input").forEach(inp => {
     inp.addEventListener("change", () => {
       filterReset.classList.add("show")
@@ -413,64 +451,6 @@ if (filter) {
       }
     })
   })
-  //price slider
-  if (priceSlider) {
-    noUiSlider.create(priceSlider, {
-      start: [3.34, 8.34],
-      connect: true,
-      range: {
-        'min': 3.34,
-        'max': 15
-      }
-    });
-    const priceStart = document.getElementById("price-start");
-    const priceEnd = document.getElementById("price-end");
-
-    priceStart.addEventListener("change", () => {
-      priceSlider.noUiSlider.set([priceStart.value, null])
-    });
-    priceEnd.addEventListener("change", () => {
-      priceSlider.noUiSlider.set([null, priceEnd.value])
-    });
-    let priceValues = [priceStart, priceEnd];
-
-    let updateCount = 0
-    priceSlider.noUiSlider.on('update', function (values, handle) {
-      updateCount++
-      priceValues[handle].value = values[handle]
-      if (updateCount > 2) {
-        filterReset.classList.add("show")
-      }
-    });
-  }
-  //floor slider
-  if (floorSlider) {
-    noUiSlider.create(floorSlider, {
-      start: [6, 10],
-      connect: true,
-      range: {
-        'min': 2,
-        'max': 18
-      }
-    });
-    const floorStart = document.getElementById("floor-start");
-    const floorEnd = document.getElementById("floor-end");
-    floorStart.addEventListener("change", () => {
-      floorSlider.noUiSlider.set([floorStart.value, null])
-    });
-    floorEnd.addEventListener("change", () => {
-      floorSlider.noUiSlider.set([null, floorEnd.value])
-    });
-    let floorValues = [floorStart, floorEnd];
-    let updateCount = 0
-    floorSlider.noUiSlider.on('update', function (values, handle) {
-      updateCount++
-      floorValues[handle].value = parseInt(values[handle])
-      if (updateCount > 2) {
-        filterReset.classList.add("show")
-      }
-    });
-  }
   document.querySelector(".filter__header").addEventListener("click", () => {
     if (window.innerWidth <= 1260) {
       openModal(document.querySelector(".mob-modal"))

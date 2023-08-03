@@ -43,7 +43,6 @@ function initSliders() {
     });
     rangeStart.addEventListener("change", () => {
       rangeSlider.noUiSlider.set([rangeStart.value, null])
-      console.log(rangeSlider.noUiSlider)
     });
     rangeEnd.addEventListener("change", () => {
       rangeSlider.noUiSlider.set([null, rangeEnd.value])

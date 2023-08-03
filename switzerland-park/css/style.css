@@ -3247,6 +3247,10 @@ h1.h2 {
   background: #ffffff;
   border-radius: 8px;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .flat__thumbswiper .swiper-slide:after {

@@ -25,7 +25,7 @@ window.addEventListener("resize", windoOnResize)
 window.addEventListener('orientationchange', windoOnResize);
 //resetbtn visible
 function resetBtnShow() {
-  filterReset.classList.add("show")
+  document.querySelector(".filter-form__reset").classList.add("show")
 }
 
 //init range slider
@@ -462,7 +462,7 @@ if (filter) {
 }
 // change image on mousemove/touchmove in catalog__block
 function catalogSlider() {
-  catalogCat.querySelectorAll(".catalog-cat__item").forEach(item => {
+  document.querySelectorAll(".catalog__wrapper .catalog-cat__item").forEach(item => {
     const catImg = item.querySelectorAll(".catalog-cat__img")
     for (let i = 0; i < catImg.length; i++) {
       let span1 = document.createElement("span")
@@ -499,6 +499,10 @@ function catalogSlider() {
       })
       el.addEventListener("mouseleave", () => leave())
     })
+    item.querySelector(".modal-show-btn").addEventListener("click", ()=> {
+      let href = item.querySelector(".modal-show-btn").getAttribute("data-modal")
+      openModal(document.querySelector(href))
+    })
   })
 }
 if (catalogCat) {
@@ -506,7 +510,7 @@ if (catalogCat) {
 }
 // scheme-popup position on mousemove
 function setSchemePopup() {
-  document.querySelectorAll(".scheme-cat__apartaments .item-apartaments .on-sale").forEach(item => {
+  document.querySelectorAll(".scheme-cat .item-apartaments .on-sale").forEach(item => {
     function move(xPos, yPos) {
       schemePopup.classList.add("open")
       let top = item.getBoundingClientRect().top

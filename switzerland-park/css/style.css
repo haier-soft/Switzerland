@@ -4172,7 +4172,11 @@ h1.h2 {
   padding-bottom: 13px;
 }
 
-.catalog-cat__content h5,
+.catalog-cat__content h5 a {
+  color: inherit;
+}
+
+.catalog-cat__content h5 a,
 .catalog-cat__content h6 {
   display: -webkit-box;
   display: -ms-flexbox;

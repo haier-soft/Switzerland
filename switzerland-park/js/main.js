@@ -57,14 +57,14 @@ function initSliders() {
     let updateCount = 0
     rangeSlider.noUiSlider.on('update', function (values, handle) {
       updateCount++
-      rangeValues[handle].value = item.classList.contains("integer") ? parseInt(values[handle]):  values[handle]
-      if(item.classList.contains("range--price")) {
-          rangeValues[handle].value = parseFloat(values[handle] / 1000000).toFixed(2);
+      rangeValues[handle].value = item.classList.contains("integer") ? parseInt(values[handle]) : values[handle]
+      if (item.classList.contains("range--price")) {
+        rangeValues[handle].value = parseFloat(values[handle] / 1000000).toFixed(2);
       }
     });
-      rangeSlider.noUiSlider.on('end', function (values, handle) {
-          $(document).find('#eFiltr').trigger("submit");
-      });
+    rangeSlider.noUiSlider.on('end', function (values, handle) {
+      $(document).find('#eFiltr').trigger("submit");
+    });
   })
 }
 //enable scroll
@@ -505,7 +505,7 @@ if (catalogCat) {
   catalogSlider()
 }
 // scheme-popup position on mousemove
-if (schemePopup) {
+function setSchemePopup() {
   document.querySelectorAll(".scheme-cat__apartaments .item-apartaments .on-sale").forEach(item => {
     function move(xPos, yPos) {
       schemePopup.classList.add("open")
@@ -530,29 +530,23 @@ if (schemePopup) {
       let url = item.getAttribute("data-url")
       let price = item.getAttribute("data-price").replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim()
       let img = item.getAttribute("data-img")
-/*       schemePopup.querySelector(".scheme-popup__header h5").innerHTML = `<span>${name}</span><span>№ ${nmb}</span>`
-      schemePopup.querySelector(".scheme-popup__header h6").innerHTML = `<span>${area} кв. м.</span><span>${floor} этаж</span>`
-      schemePopup.querySelector(".scheme-popup__price").textContent = price + " руб"
-      schemePopup.querySelector(".stroke-btn").setAttribute("href", url)
-      schemePopup.querySelector(".scheme-popup__preview").setAttribute("href", url)
-      schemePopup.querySelector(".scheme-popup__preview img").setAttribute("src", img) */
       schemePopup.querySelector(".modal__scroll").innerHTML = `
       <div class="scheme-popup__header">
-      <h5>${`<span>${name}</span><span>№ ${nmb}</span>`}</h5>
-      <h6>${`<span>${area} кв. м.</span><span>${floor} этаж</span>`}</h6>
-  </div>
-  <a href=${url} class="scheme-popup__preview">
-      <picture><img src=${img} alt=""></picture>
-      <div class="catalog-compass">
-          <svg>
-              <use xlink:href="img/icons/sprite.svg#compass"></use>
-          </svg>
+        <h5>${`<span>${name}</span><span>№ ${nmb}</span>`}</h5>
+        <h6>${`<span>${area} кв. м.</span><span>${floor} этаж</span>`}</h6>
       </div>
-  </a>
-  <div class="scheme-popup__footer">
-      <div class="h5 scheme-popup__price">${price} руб</div>
-      <a href=${url} class="btn stroke-btn">Подробнее</a>
-  </div>
+      <a href=${url} class="scheme-popup__preview">
+          <picture><img src=${img} alt=""></picture>
+          <div class="catalog-compass">
+              <svg>
+                  <use xlink:href="img/icons/sprite.svg#compass"></use>
+              </svg>
+          </div>
+      </a>
+      <div class="scheme-popup__footer">
+          <div class="h5 scheme-popup__price">${price} руб</div>
+          <a href=${url} class="btn stroke-btn">Подробнее</a>
+      </div>
         `
     }
     function resetPopupData() {
@@ -560,7 +554,7 @@ if (schemePopup) {
     }
     item.addEventListener("mouseenter", () => {
       if (window.innerWidth > 1260) {
-         setPopupData()
+        setPopupData()
       }
     })
     item.addEventListener("mousemove", (e) => {
@@ -580,6 +574,9 @@ if (schemePopup) {
       }
     })
   })
+}
+if (schemePopup) {
+  setSchemePopup()
 }
 //tabs on click
 const catTab = document.querySelectorAll(".catalog__tab")

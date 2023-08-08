@@ -60,10 +60,7 @@ function initSliders() {
       rangeValues[handle].value = item.classList.contains("integer") ? parseInt(values[handle]):  values[handle]
       if(item.classList.contains("range--price")) {
           rangeValues[handle].value = parseFloat(values[handle] / 1000000).toFixed(2);
-      }/* 
-      if (updateCount > 2) {
-        filterReset.classList.add("show")
-      } */
+      }
     });
       rangeSlider.noUiSlider.on('end', function (values, handle) {
           $(document).find('#eFiltr').trigger("submit");
@@ -108,7 +105,6 @@ function filterFormOnReset(form) {
     inp.checked = false
     priceSlider.noUiSlider.reset()
     floorSlider.noUiSlider.reset()
-    filterReset.classList.remove("show")
   })
 }
 //show modal
@@ -451,11 +447,6 @@ if (document.querySelector(".infra__swiper")) {
 //filter-form
 if (filter) {
   initSliders()
-  /* filter.querySelectorAll("input").forEach(inp => {
-    inp.addEventListener("change", () => {
-      filterReset.classList.add("show")
-    })
-  }) */
   filterCheckbox.querySelectorAll("input").forEach(inp => {
     inp.addEventListener("change", () => {
       if (filterCheckbox.querySelectorAll("input:checked").length === filterCheckbox.querySelectorAll("input").length) {
@@ -565,23 +556,12 @@ if (schemePopup) {
         `
     }
     function resetPopupData() {
-     /*  schemePopup.querySelector(".scheme-popup__header h5").innerHTML = ""
-      schemePopup.querySelector(".scheme-popup__header h6").innerHTML = ""
-      schemePopup.querySelector(".scheme-popup__price").textContent = ""
-      schemePopup.querySelector(".stroke-btn").setAttribute("href", "")
-      schemePopup.querySelector(".scheme-popup__preview").setAttribute("href", "")
-      schemePopup.querySelector(".scheme-popup__preview img").setAttribute("src", "") */
       schemePopup.querySelector(".modal__scroll").innerHTML = ""
     }
     item.addEventListener("mouseenter", () => {
       if (window.innerWidth > 1260) {
          setPopupData()
       }
-    })
-    item.addEventListener("mouseleave", () => {
-      if (window.innerWidth > 1260) {
-        resetPopupData()
-     }
     })
     item.addEventListener("mousemove", (e) => {
       if (window.innerWidth > 1260) {
@@ -596,7 +576,7 @@ if (schemePopup) {
       if (window.innerWidth <= 1260) {
         e.preventDefault()
         setPopupData()
-        setTimeout(openModal(schemePopup), 0);
+        openModal(schemePopup)
       }
     })
   })

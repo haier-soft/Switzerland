@@ -385,6 +385,7 @@
     }  
     .modal__close {
         display: none;
+        pointer-events: none;
     }
     @media (max-width: $bp2) {
         height: 100%;

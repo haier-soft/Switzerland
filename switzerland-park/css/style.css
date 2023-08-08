@@ -1342,6 +1342,7 @@ h1.h2 {
 
 .mob-modal .modal__close {
   display: none;
+  pointer-events: none;
 }
 
 .fancy-modal .modal__overlay {

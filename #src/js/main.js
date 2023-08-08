@@ -14,6 +14,7 @@ const filterCheckbox = document.querySelector(".filter-form__checkbox")
 const priceSlider = document.querySelector('.price-slider');
 const floorSlider = document.querySelector('.floor-slider');
 const filterReset = document.querySelector(".filter-form__reset")
+const catalogCat = document.querySelector(".catalog-cat")
 const schemePopup = document.querySelector(".scheme-popup")
 let paddingValue = window.innerWidth > 325 ? window.innerWidth - document.documentElement.clientWidth + 'px' : 0
 let modalAnimSpd = 500
@@ -22,6 +23,11 @@ function windoOnResize() {
 }
 window.addEventListener("resize", windoOnResize)
 window.addEventListener('orientationchange', windoOnResize);
+//resetbtn visible
+function resetBtnShow() {
+  filterReset.classList.add("show")
+}
+
 //init range slider
 function initSliders() {
   let rangeSliders = filter.querySelectorAll(".range")
@@ -52,10 +58,16 @@ function initSliders() {
     rangeSlider.noUiSlider.on('update', function (values, handle) {
       updateCount++
       rangeValues[handle].value = item.classList.contains("integer") ? parseInt(values[handle]):  values[handle]
+      if(item.classList.contains("range--price")) {
+          rangeValues[handle].value = parseFloat(values[handle] / 1000000).toFixed(2);
+      }/* 
       if (updateCount > 2) {
         filterReset.classList.add("show")
-      }
+      } */
     });
+      rangeSlider.noUiSlider.on('end', function (values, handle) {
+          $(document).find('#eFiltr').trigger("submit");
+      });
   })
 }
 //enable scroll
@@ -439,11 +451,11 @@ if (document.querySelector(".infra__swiper")) {
 //filter-form
 if (filter) {
   initSliders()
-  filter.querySelectorAll("input").forEach(inp => {
+  /* filter.querySelectorAll("input").forEach(inp => {
     inp.addEventListener("change", () => {
       filterReset.classList.add("show")
     })
-  })
+  }) */
   filterCheckbox.querySelectorAll("input").forEach(inp => {
     inp.addEventListener("change", () => {
       if (filterCheckbox.querySelectorAll("input:checked").length === filterCheckbox.querySelectorAll("input").length) {
@@ -458,8 +470,8 @@ if (filter) {
   })
 }
 // change image on mousemove/touchmove in catalog__block
-if (document.querySelector(".catalog-cat__main")) {
-  document.querySelectorAll(".catalog-cat__item").forEach(item => {
+function catalogSlider() {
+  catalogCat.querySelectorAll(".catalog-cat__item").forEach(item => {
     const catImg = item.querySelectorAll(".catalog-cat__img")
     for (let i = 0; i < catImg.length; i++) {
       let span1 = document.createElement("span")
@@ -498,9 +510,12 @@ if (document.querySelector(".catalog-cat__main")) {
     })
   })
 }
+if (catalogCat) {
+  catalogSlider()
+}
 // scheme-popup position on mousemove
 if (schemePopup) {
-  document.querySelectorAll(".item-apartaments .on-sale").forEach(item => {
+  document.querySelectorAll(".scheme-cat__apartaments .item-apartaments .on-sale").forEach(item => {
     function move(xPos, yPos) {
       schemePopup.classList.add("open")
       let top = item.getBoundingClientRect().top
@@ -516,18 +531,72 @@ if (schemePopup) {
         schemePopup.style.top = yPos + 25 + "px"
       }
     }
+    function setPopupData() {
+      let nmb = item.getAttribute("data-nmb") ? item.getAttribute("data-nmb") : ""
+      let name = item.getAttribute("data-name")
+      let area = item.getAttribute("data-area")
+      let floor = item.getAttribute("data-floor")
+      let url = item.getAttribute("data-url")
+      let price = item.getAttribute("data-price").replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim()
+      let img = item.getAttribute("data-img")
+/*       schemePopup.querySelector(".scheme-popup__header h5").innerHTML = `<span>${name}</span><span>№ ${nmb}</span>`
+      schemePopup.querySelector(".scheme-popup__header h6").innerHTML = `<span>${area} кв. м.</span><span>${floor} этаж</span>`
+      schemePopup.querySelector(".scheme-popup__price").textContent = price + " руб"
+      schemePopup.querySelector(".stroke-btn").setAttribute("href", url)
+      schemePopup.querySelector(".scheme-popup__preview").setAttribute("href", url)
+      schemePopup.querySelector(".scheme-popup__preview img").setAttribute("src", img) */
+      schemePopup.querySelector(".modal__scroll").innerHTML = `
+      <div class="scheme-popup__header">
+      <h5>${`<span>${name}</span><span>№ ${nmb}</span>`}</h5>
+      <h6>${`<span>${area} кв. м.</span><span>${floor} этаж</span>`}</h6>
+  </div>
+  <a href=${url} class="scheme-popup__preview">
+      <picture><img src=${img} alt=""></picture>
+      <div class="catalog-compass">
+          <svg>
+              <use xlink:href="img/icons/sprite.svg#compass"></use>
+          </svg>
+      </div>
+  </a>
+  <div class="scheme-popup__footer">
+      <div class="h5 scheme-popup__price">${price} руб</div>
+      <a href=${url} class="btn stroke-btn">Подробнее</a>
+  </div>
+        `
+    }
+    function resetPopupData() {
+     /*  schemePopup.querySelector(".scheme-popup__header h5").innerHTML = ""
+      schemePopup.querySelector(".scheme-popup__header h6").innerHTML = ""
+      schemePopup.querySelector(".scheme-popup__price").textContent = ""
+      schemePopup.querySelector(".stroke-btn").setAttribute("href", "")
+      schemePopup.querySelector(".scheme-popup__preview").setAttribute("href", "")
+      schemePopup.querySelector(".scheme-popup__preview img").setAttribute("src", "") */
+      schemePopup.querySelector(".modal__scroll").innerHTML = ""
+    }
+    item.addEventListener("mouseenter", () => {
+      if (window.innerWidth > 1260) {
+         setPopupData()
+      }
+    })
+    item.addEventListener("mouseleave", () => {
+      if (window.innerWidth > 1260) {
+        resetPopupData()
+     }
+    })
     item.addEventListener("mousemove", (e) => {
       if (window.innerWidth > 1260) {
         move(e.clientX, e.clientY)
         item.addEventListener("mouseleave", () => {
           schemePopup.classList.remove("open")
+          resetPopupData()
         })
       }
     })
     item.addEventListener("click", e => {
       if (window.innerWidth <= 1260) {
         e.preventDefault()
-        openModal(schemePopup)
+        setPopupData()
+        setTimeout(openModal(schemePopup), 0);
       }
     })
   })
